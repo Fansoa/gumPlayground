@@ -21,5 +21,14 @@ function showMyFeed() {
   document.querySelector("#my-video").srcObject = stream
 }
 
+function stopMyFeed() {
+  const tracks = stream.getTracks()
+  tracks.forEach(track => {
+    track.stop();
+  });
+} 
+
 document.querySelector("#share").addEventListener('click', e => getMicAndCamera(e))
 document.querySelector("#show-video").addEventListener('click', e => showMyFeed(e))
+document.querySelector("#stop-video").addEventListener('click', e => stopMyFeed(e))
+
