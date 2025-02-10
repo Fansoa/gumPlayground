@@ -17,4 +17,9 @@ async function getMicAndCamera(e) {
     }
 }
 
+function showMyFeed() {
+  document.querySelector("#my-video").srcObject = stream
+}
+
 document.querySelector("#share").addEventListener('click', e => getMicAndCamera(e))
+document.querySelector("#show-video").addEventListener('click', e => showMyFeed(e))
