@@ -2,23 +2,37 @@ let recordedBlobs;
 let mediaRecorder;
 
 function startRecording() {
+  if (!stream) {
+    alert("No current feed")
+    return
+  }
   console.log("start recording");
   mediaRecorder = new MediaRecorder(stream)
   recordedBlobs = []
   mediaRecorder.ondataavailable = e => {
-    console.log("🚀 ~ startRecording ~ e:", e)
-    recordedBlobs.push(e.data)
     console.log("Data is available for the media recorder")
+    recordedBlobs.push(e.data)
   }
   mediaRecorder.start()
+  changeButtons(['green', 'green', 'blue', 'blue', 'green', 'blue', 'grey', 'blue'])
 }
 
 function stopRecording() {
+  if (!mediaRecorder) {
+    alert("Please record before stopping!")
+    return
+  }
   mediaRecorder.stop()
   console.log("stop recorder");
+  changeButtons(['green', 'green', 'blue', 'blue', 'green', 'green', 'blue', 'blue'])
+
 }
 
 function playRecording() {
+  if (!recordedBlobs) {
+    alert("No recording saved")
+    return
+  }
   console.log("play recording");
   console.log(recordedBlobs)
   const superBuffer = new Blob(recordedBlobs)
