@@ -25,7 +25,6 @@ function stopRecording() {
   mediaRecorder.stop()
   console.log("stop recorder");
   changeButtons(['green', 'green', 'blue', 'blue', 'green', 'green', 'blue', 'blue'])
-
 }
 
 function playRecording() {
@@ -40,4 +39,5 @@ function playRecording() {
   recordVideoEl.src = window.URL.createObjectURL(superBuffer)
   recordVideoEl.controls = true
   recordVideoEl.play()
+  changeButtons(['green', 'green', 'blue', 'blue', 'green', 'green', 'green', 'blue'])
 }
