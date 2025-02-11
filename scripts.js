@@ -9,6 +9,7 @@ const constraints = {
   }
 }
 
+const videoEl = document.querySelector('#my-video')
 let mediaStream = null;
 let stream = null;
 
@@ -16,6 +17,8 @@ async function getMicAndCamera(e) {
     try {
       /* use the stream */
       stream = await navigator.mediaDevices.getUserMedia(constraints);
+      const devices = await getDevices()
+      console.log("🚀 ~ getMicAndCamera ~ devices:", devices)
 
       changeButtons(['green', 'blue', 'blue', 'grey', 'grey', 'grey', 'grey', 'grey'])
       
@@ -53,3 +56,7 @@ document.querySelector('#start-record').addEventListener('click', e => startReco
 document.querySelector('#stop-record').addEventListener('click', e => stopRecording(e))
 document.querySelector('#play-record').addEventListener('click', e => playRecording(e))
 document.querySelector('#share-screen').addEventListener('click', e => shareScreen(e))
+
+document.querySelector('#audio-input').addEventListener('change', e => changeAudioInput(e))
+document.querySelector('#audio-output').addEventListener('change', e => changeAudioOutput(e))
+document.querySelector('#video-input').addEventListener('change', e => changeVideo(e))
