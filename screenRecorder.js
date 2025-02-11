@@ -24,5 +24,6 @@ function playRecording() {
   const superBuffer = new Blob(recordedBlobs)
   const recordVideoEl = document.querySelector("#other-video")
   recordVideoEl.src = window.URL.createObjectURL(superBuffer)
+  recordVideoEl.controls = true
   recordVideoEl.play()
 }
